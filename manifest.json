@@ -1,0 +1,17 @@
+{
+  "name": "Malicious Extension",
+  "description": "A Malicious Extension for Course Project",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "permissions": ["storage", "activeTab", "scripting", "tabs", "cookies", "contentSettings"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["jquery-3.6.0.min.js","content_script.js"]
+    }
+  ]
+}
