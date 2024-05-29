@@ -31,7 +31,7 @@ flags = {
     "geolocation": "true",
     "keylog": "true",
     "urls": "true",
-    "input": true,
+    "input": "true",
 }
 
 @app.route('/', methods=['POST'])
