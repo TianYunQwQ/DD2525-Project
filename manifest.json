@@ -7,7 +7,7 @@
     "service_worker": "background.js"
   },
   
-  "permissions": ["storage", "activeTab", "scripting", "tabs", "cookies", "contentSettings"],
+  "permissions": [ "activeTab", "scripting", "tabs",  "contentSettings"],
   "content_scripts": [
     {
       "matches": ["https://*/*"],

